@@ -16,8 +16,11 @@ import com.hsc.springbootproject.product.entity.Product;
 @Service
 public class BookServiceImpl implements BookService {
 
-	@Autowired
 	private BookRepository repository;
+	@Autowired
+	BookServiceImpl(BookRepository repository) {
+		this.repository = repository;
+	}
 	
 	@Override
 	public Book saveBook(Book book) {

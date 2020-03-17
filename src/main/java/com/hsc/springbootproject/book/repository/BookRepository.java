@@ -4,7 +4,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.hsc.springbootproject.book.model.Book;
 
-public interface BookRepository extends MongoRepository<Book, Integer>{
+public interface BookRepository extends MongoRepository<Book, Integer> {
 
 	Book findByTitle(String title);
 }
