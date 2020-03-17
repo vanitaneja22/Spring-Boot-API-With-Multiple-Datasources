@@ -6,5 +6,5 @@ import com.hsc.springbootproject.book.model.Book;
 
 public interface BookRepository extends MongoRepository<Book, Integer>{
 
-	Book findByName(String name);
+	Book findByTitle(String title);
 }

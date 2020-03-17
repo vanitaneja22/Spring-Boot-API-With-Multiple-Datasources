@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hsc.springbootproject.exceptions.ProductNotFoundException;
 import com.hsc.springbootproject.product.entity.Product;
 import com.hsc.springbootproject.product.repository.ProductRepository;
 
@@ -19,7 +20,7 @@ public class ProductServiceImpl implements ProductService {
 	public Product saveProduct(Product product) {
 		return repository.save(product);
 	}
-	//save the entire object to database
+
 	@Override
 	public List<Product> saveProducts(List<Product> products) {
 		return repository.saveAll(products);
@@ -27,7 +28,7 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public Product getProductById(int id) {
-		return repository.findById(id).orElse(null);
+		return repository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
 	}
 	
 	@Override
@@ -48,9 +49,9 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public Product updateProduct(Product product) {
-		Product p = repository.findById(product.getId()).orElse(null);
-		assert p != null;
-		// always check if p is null or not then call methods on it, else nullpointerexception will arise
+		int productId = product.getId();
+		Product p = repository.findById(productId).orElseThrow
+				(()->new ProductNotFoundException(productId));
 		p.setName(product.getName());
 		p.setQuantity(product.getQuantity());
 		p.setPrice(product.getPrice());

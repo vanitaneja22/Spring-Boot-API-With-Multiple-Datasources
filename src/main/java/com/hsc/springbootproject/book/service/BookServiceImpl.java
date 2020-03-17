@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.hsc.springbootproject.book.model.Book;
 import com.hsc.springbootproject.book.repository.BookRepository;
+import com.hsc.springbootproject.exceptions.BookNotFoundException;
+import com.hsc.springbootproject.exceptions.ProductNotFoundException;
+import com.hsc.springbootproject.product.entity.Product;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -28,12 +31,12 @@ public class BookServiceImpl implements BookService {
 	
 	@Override
 	public Book getBookById(int id) {
-		return repository.findById(id).orElse(null);
+		return repository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
 	}
 	
 	@Override
-	public Book getBookByName(@PathVariable String name) {
-        return repository.findByName(name);
+	public Book getBookByTitle(@PathVariable String title) {
+        return repository.findByTitle(title);
     }
 	
 	
@@ -45,8 +48,9 @@ public class BookServiceImpl implements BookService {
 	
 	@Override
 	public Book updateBook(@RequestBody Book book) {
-        Book b = repository.findById(book.getId()).orElse(null);
-        assert b != null;
+		int bookId = book.getId();
+		Book b = repository.findById(bookId).orElseThrow
+				(()->new BookNotFoundException(bookId));
         b.setId(book.getId());
         b.setTitle(book.getTitle());
         b.setAuthor(book.getAuthor());

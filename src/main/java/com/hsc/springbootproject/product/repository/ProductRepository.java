@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.hsc.springbootproject.product.entity.Product;
 
-public interface ProductRepository extends JpaRepository<Product, Integer>{   //first agr is model anme and second is datatype of id i.e. int
-
+public interface ProductRepository extends JpaRepository<Product, Integer>{   
 	Product findByName(String name);
 }
