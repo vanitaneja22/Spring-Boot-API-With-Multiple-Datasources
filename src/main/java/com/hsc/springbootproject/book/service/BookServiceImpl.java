@@ -13,8 +13,11 @@ import com.hsc.springbootproject.book.repository.BookRepository;
 @Service
 public class BookServiceImpl implements BookService {
 
-	@Autowired
 	private BookRepository repository;
+	@Autowired
+	BookServiceImpl(BookRepository repository) {
+		this.repository = repository;
+	}
 	
 	@Override
 	public Book saveBook(Book book) {
@@ -32,8 +35,8 @@ public class BookServiceImpl implements BookService {
 	}
 	
 	@Override
-	public Book getBookByName(@PathVariable String name) {
-        return repository.findByName(name);
+	public Book getBookByName(@PathVariable String title) {
+        return repository.findByTitle(title);
     }
 	
 	
