@@ -40,7 +40,7 @@ public class SpringBootProjectApplicationBookIntegrationTests {
 	}
 
 	@Test
-	public void getAllBooksTest() {
+	public void getBooksTest() {
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<String> entity = new HttpEntity<String>(null, headers);
 
@@ -51,7 +51,7 @@ public class SpringBootProjectApplicationBookIntegrationTests {
 	}
 
 	@Test
-	public void addBooksTest() {
+	public void saveBooksTest() {
 		Book book = new Book();
 		book.setId(112);
 		book.setTitle("Java Concepts");

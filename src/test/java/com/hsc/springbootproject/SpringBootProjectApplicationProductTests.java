@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.hsc.springbootproject.book.model.Book;
 import com.hsc.springbootproject.product.entity.Product;
 import com.hsc.springbootproject.product.repository.ProductRepository;
 import com.hsc.springbootproject.product.service.ProductService;
@@ -46,6 +47,17 @@ public class SpringBootProjectApplicationProductTests {
 		Product product = new Product(10, "Airpods", 10, 10000);
 		when(repository.save(product)).thenReturn(product);
 		assertEquals(product, service.saveProduct(product));
+	}
+	
+	@Test
+	public void updateBookTest() {
+		Product product = new Product();
+		product.setId(2);
+		product.setName("Watch");
+		product.setQuantity(25);
+		product.setPrice(6500);
+		when(repository.save(product)).thenReturn(product);
+		assertEquals(product, service.updateProduct(product));
 	}
 
 	@Test

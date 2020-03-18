@@ -46,6 +46,16 @@ class SpringBootProjectApplicationBookTests {
 		when(repository.save(book)).thenReturn(book);
 		assertEquals(book, service.saveBook(book));
 	}
+	
+	@Test
+	public void updateBookTest() {
+		Book book = new Book();
+		book.setId(102);
+		book.setTitle("Java Concurrency In Practice-II");
+		book.setAuthor("Brian Goetz");
+		when(repository.save(book)).thenReturn(book);
+		assertEquals(book, service.updateBook(book));
+	}
 
 	@Test
 	public void deleteBookTest() {

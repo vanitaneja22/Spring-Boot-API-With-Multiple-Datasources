@@ -11,9 +11,6 @@ public class Book {
 	private String title;
 	private String author;
 	
-//	public Book(int i, String string, String string2) {
-//		// TODO Auto-generated constructor stub
-//	}
 	
 	public Book(int id, String title, String author) {
 		super();
@@ -21,7 +18,6 @@ public class Book {
 		this.title = title;
 		this.author = author;
 	}
-
 
 	public Book() {
 		// TODO Auto-generated constructor stub
