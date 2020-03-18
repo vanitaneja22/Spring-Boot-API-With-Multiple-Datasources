@@ -11,6 +11,21 @@ public class Book {
 	private String title;
 	private String author;
 	
+//	public Book(int i, String string, String string2) {
+//		// TODO Auto-generated constructor stub
+//	}
+	
+	public Book(int id, String title, String author) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.author = author;
+	}
+
+	public Book(int i) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}
