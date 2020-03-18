@@ -22,7 +22,8 @@ public class Book {
 		this.author = author;
 	}
 
-	public Book(int i) {
+
+	public Book() {
 		// TODO Auto-generated constructor stub
 	}
 

@@ -24,6 +24,9 @@ public class Product {
 		this.quantity = quantity;
 		this.price = price;
 	}
+	public Product() {
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return id;
 	}
