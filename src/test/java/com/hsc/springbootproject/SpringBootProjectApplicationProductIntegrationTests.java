@@ -76,13 +76,9 @@ public class SpringBootProjectApplicationProductIntegrationTests {
 	@Test
 	public void deleteProductTest() {
 		int id = 8;
-		Product product = restTemplate.getForObject(getRootUrl() + "/product/delete" + id, Product.class);
-		assertNotNull(product);
-
 		restTemplate.delete(getRootUrl() + "/product/delete" + id);
-
 		try {
-			product = restTemplate.getForObject(getRootUrl() + "/product/delete" + id, Product.class);
+			Product product = restTemplate.getForObject(getRootUrl() + "/product/delete" + id, Product.class);
 		} catch (final HttpClientErrorException e) {
 			assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
 		}

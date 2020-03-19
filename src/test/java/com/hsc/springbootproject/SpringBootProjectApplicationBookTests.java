@@ -21,7 +21,7 @@ import com.hsc.springbootproject.book.service.BookService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class SpringBootProjectApplicationBookTests {
+public class SpringBootProjectApplicationBookTests {
 
 	@Test
 	void contextLoads() {

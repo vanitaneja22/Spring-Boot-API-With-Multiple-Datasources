@@ -74,14 +74,10 @@ public class SpringBootProjectApplicationBookIntegrationTests {
 	
 	@Test
 	public void deleteBookTest() {
-		int id = 105;
-		Book book = restTemplate.getForObject(getRootUrl() + "/book/delete" + id, Book.class);
-		assertNotNull(book);
-
+		int id = 105;	
 		restTemplate.delete(getRootUrl() + "/book/delete" + id);
-
 		try {
-			book = restTemplate.getForObject(getRootUrl() + "/book/delete" + id, Book.class);
+			Book book = restTemplate.getForObject(getRootUrl() + "/book/delete" + id, Book.class);
 		} catch (final HttpClientErrorException e) {
 			assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
 		}
